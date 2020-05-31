@@ -1,0 +1,9 @@
+Dockerfile
+__pycache__/
+.vscode/
+.mypy_cache/
+*.egg-info/
+dist/
+.gitignore/
+.git/
+README.md
