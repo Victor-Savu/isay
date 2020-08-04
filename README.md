@@ -3,6 +3,14 @@
 This is a highly opinionated example of how to manage dependencies of a python
 application and how to package it in a small alpine-based Docker image.
 
+## How do I use this?
+
+Copy the `Dockerfile` into the root of your python project folder (next to your
+`pyproject.toml`) and run:
+```sh
+docker build -t myimagetag .
+```
+
 ## Features
 
 ### Small Docker image
@@ -33,7 +41,7 @@ dependencies (and for the project) while the `dependencies` are needed to run
 the application.
 
 The `alpine3-11` part in the section name has to match the version of alpine
-linux that the python image is based on. The first line in the `Dockerfile`
+linux that the python image is based on. The second line in the `Dockerfile`
 reads:
 
 ```docker
@@ -43,6 +51,10 @@ FROM python:3.8-alpine3.11 as base
 The `alpine3.11` part in the `Dockerfile` must match the `alpine3-11` part in
 `pyproject.toml` (with the `.` replaced by a `-` due to restrictions on section
 names in `toml`).
+
+If you'd like to use another version of alpine for your project, change that in
+the second line of the `Dockerfile`. If you rely on any system dependencies, refer
+to the [section below](<#system-dependencies>).
 
 ### Cache-friendly Docker builds
 
